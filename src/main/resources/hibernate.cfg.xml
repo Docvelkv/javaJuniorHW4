@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Настройки подключения к базе данных JDBC -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3307/schoolDB?createDatabaseIfNotExist=TRUE</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">pass</property>
+
+        <!-- Настройки пула соединений JDBC... Использование встроенного пула тестов -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- Режим autocommit -->
+        <property name="connection.autocommit">true</property>
+
+        <!-- Вывод SQL в консоль -->
+        <property name="show_sql">false</property>
+
+        <!-- Задание контекста текущего сеанса -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Создание схемы базы данных при запуске -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Конфигурация пула соединений C3P0 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">200</property>
+        <property name="hibernate.c3p0.max_statements">200</property>
+
+        <mapping class="entitys.Course"/>
+        <mapping class="entitys.Student"/>
+
+    </session-factory>
+</hibernate-configuration>
